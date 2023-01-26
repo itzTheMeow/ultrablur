@@ -1,2 +1,3 @@
-# typescript-template
-A template for TypeScript repositories.
+# Ultrablur
+
+https://git.itsmeow.cat/ultrablur
