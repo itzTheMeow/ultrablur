@@ -1,4 +1,5 @@
 import tinycolor from "tinycolor2";
+import config from "./config";
 
 /**
  * Generate a CSS `background` value using radial-gradient.
@@ -7,18 +8,14 @@ import tinycolor from "tinycolor2";
  * @returns The CSS string for the `background` rule.
  */
 export function generateUltrablurCSS(color: string, background: string) {
-  const pos = ["0% 100%", "100% 100%", "100% 0%", "0% 0%"],
-    mix = [71, 67, 66, 68];
   return [
     ...new Array(4)
       .fill(0)
       .map(
         (_, i) =>
-          `radial-gradient(circle farthest-side at ${pos[i]}, ${tinycolor.mix(
-            color,
-            background,
-            mix[i]
-          )} 0%, transparent 100%)`
+          `radial-gradient(circle farthest-side at ${config.stops[i]
+            .map((s) => s + "%")
+            .join(" ")}, ${tinycolor.mix(color, background, config.mix[i])} 0%, transparent 100%)`
       ),
     background,
   ].join(", ");
