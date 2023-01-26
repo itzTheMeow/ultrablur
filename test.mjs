@@ -1,13 +1,21 @@
 import fs from "fs";
+import { generateUltrablurCSS } from "./dist/index.js";
 
-if(!fs.existsSync("tests")) fs.mkdirSync("tests");
+const color = "#faf0fa",
+  bg = "#000000";
 
-fs.writeFileSync("tests/test.html", `<body>
+if (!fs.existsSync("tests")) fs.mkdirSync("tests");
+
+fs.writeFileSync(
+  "tests/test.html",
+  `<body>
   <style>
     body {
+      margin: 0;
       width: 100%;
       height: 100%;
-      background: ${generateUltrablurCSS("#faf0fa", "#000000")};
+      background: ${generateUltrablurCSS(color, bg)};
     }  
   </style>
-</body>`);
+</body>`
+);
