@@ -1,3 +1,13 @@
 import fs from "fs";
 
-fs.writeFileSync("test.html", `generateUltrablurCSS("#faf0fa", "#000000")`);
+if(!fs.existsSync("tests")) fs.mkdirSync("tests");
+
+fs.writeFileSync("tests/test.html", `<body>
+  <style>
+    body {
+      width: 100%;
+      height: 100%;
+      background: ${generateUltrablurCSS("#faf0fa", "#000000")};
+    }  
+  </style>
+</body>`);
